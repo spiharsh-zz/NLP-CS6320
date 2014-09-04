@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Concurrent;
+using System.IO;
+using System.Threading;
 
 namespace StringTokenization
 {
@@ -10,6 +10,14 @@ namespace StringTokenization
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Counting Words");
+            DateTime start_at = DateTime.Now;
+            TrieNode root = new TrieNode(null, '?');
+            Dictionary<DataReader, Thread> readers = new Dictionary<DataReader, Thread>();
+            if (args.Length ==0)
+            {
+                args = new string[]{ }
+            }
         }
     }
 }
