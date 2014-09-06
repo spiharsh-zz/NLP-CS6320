@@ -9,10 +9,10 @@ namespace StringTokenization
 {
     public class TrieNode : IComparable<TrieNode>
     {
-        private char m_char;
-        private int m_word_count;
-        private TrieNode m_parent = null;
-        private ConcurrentDictionary<char, TrieNode> m_children = null;
+        public char m_char;
+        public int m_word_count;
+        public TrieNode m_parent = null;
+        public ConcurrentDictionary<char, TrieNode> m_children = null;
 
         public TrieNode(TrieNode parent, char c)
         {
@@ -25,7 +25,7 @@ namespace StringTokenization
         {
             if (index<word.Length)
             {
-                char key = word[index];
+                char key = Char.ToLower(word[index]);
                 if (char.IsLetter(key))
                 {
                     if (!m_children.ContainsKey(key))
@@ -70,6 +70,8 @@ namespace StringTokenization
 
         public void GetTopCounts(ref List<TrieNode> most_counted, ref int distinct_word_count, ref int total_word_count)
         {
+            if(m_word_count ==1)
+                //Console.WriteLine("")
             if (m_word_count >0)
             {
                 distinct_word_count++;

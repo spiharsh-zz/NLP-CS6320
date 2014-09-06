@@ -29,7 +29,8 @@ namespace StringTokenization
                         string line;
                         while ((line = sreader.ReadLine())!=null)
                         {
-                            string[] chunks = line.Split(null);
+                            char[] delims = { ' ' };
+                            string[] chunks = line.Split(delims);
                             foreach (string chunk in chunks)
                             {
                                 m_root.AddWord(chunk.Trim());
